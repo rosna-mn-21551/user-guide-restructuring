@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configure Application Groups | Help | Endpoint Central</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Help-doc house style. Edit here to restyle ALL documents.
+   The renderer inlines this file into every output, so changes
+   apply to every page the next time it is regenerated.
+   ============================================================ */
+:root{
+  --bg:#F5F6F8;
+  --surface:#FFFFFF;
+  --ink:#1B2128;
+  --body:#363E49;
+  --muted:#6B7480;
+  --line:#E6E8EC;
+  --line-soft:#EEF0F3;
+
+  --accent:#0F766E;
+  --accent-strong:#0B5C52;
+  --accent-soft:#E6F2F0;
+
+  --ok:#15803D;        --ok-soft:#E7F4EC;
+  --warn:#B45309;      --warn-soft:#FAEEDC;
+  --crit:#B91C1C;      --crit-soft:#FBE9E9;
+  --insight:#5B4BC4;   --insight-soft:#ECEAFA;
+  --note:#5A6573;      --note-soft:#F0F2F5;
+
+  --display:'Space Grotesk',-apple-system,system-ui,sans-serif;
+  --text:'IBM Plex Sans',-apple-system,system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --maxw:1180px;
+  --header-h:60px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--bg);color:var(--body);
+  font-family:var(--text);font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent-strong);text-decoration:none;}
+a:hover{text-decoration:underline;text-underline-offset:2px;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px;}
+
+.skip{
+  position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;
+  padding:10px 16px;border-radius:0 0 8px 0;z-index:50;font-family:var(--mono);font-size:.8rem;
+}
+.skip:focus{left:0;text-decoration:none;}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:30;height:var(--header-h);
+  background:rgba(255,255,255,.88);backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.site-header .inner{
+  max-width:var(--maxw);height:100%;margin:0 auto;padding:0 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.crumbs{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted);
+  display:flex;align-items:center;gap:8px;min-width:0;}
+.crumbs .sep{opacity:.5;}
+.crumbs .here{color:var(--ink);}
+.crumbs a{color:var(--muted);}
+.trial{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.03em;
+  background:var(--accent);color:#fff;padding:8px 13px;border-radius:7px;white-space:nowrap;
+}
+.trial:hover{background:var(--accent-strong);text-decoration:none;}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+.layout{
+  display:grid;grid-template-columns:248px minmax(0,1fr);gap:60px;
+  padding:48px 0 96px;
+}
+
+/* ---------- side nav ---------- */
+.toc{position:sticky;top:calc(var(--header-h) + 28px);align-self:start;
+  max-height:calc(100vh - var(--header-h) - 56px);overflow:auto;padding-right:6px;}
+.toc h2{
+  font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 14px;
+}
+.toc ul{list-style:none;margin:0;padding:0;}
+.toc > ul > li{margin-bottom:4px;}
+.toc a{
+  display:block;color:var(--body);font-size:.9rem;line-height:1.4;
+  padding:5px 0 5px 14px;border-left:2px solid transparent;transition:color .15s,border-color .15s;
+}
+.toc a:hover{color:var(--accent-strong);text-decoration:none;}
+.toc .sub{padding-left:14px;margin:2px 0 8px;}
+.toc .sub a{font-size:.84rem;color:var(--muted);padding-top:3px;padding-bottom:3px;}
+.toc a.active{color:var(--accent-strong);border-left-color:var(--accent);font-weight:600;}
+.toc .lead-link{font-weight:600;color:var(--ink);}
+
+/* ---------- article ---------- */
+.article{max-width:752px;}
+.eyebrow{
+  font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 14px;
+}
+h1{
+  font-family:var(--display);font-weight:700;color:var(--ink);
+  font-size:clamp(2.1rem,4.4vw,2.95rem);line-height:1.04;letter-spacing:-.02em;margin:0 0 18px;
+}
+.dek{font-size:1.16rem;line-height:1.6;color:#475061;margin:0 0 24px;max-width:64ch;}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px;padding:0;list-style:none;}
+.chip{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:#41495a;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;
+}
+
+.doc-section{margin-top:64px;scroll-margin-top:84px;}
+.doc-section > .eyebrow{margin-bottom:10px;}
+h2.sec-title{
+  font-family:var(--display);font-weight:600;color:var(--ink);
+  font-size:1.62rem;line-height:1.15;letter-spacing:-.01em;margin:0 0 10px;
+}
+.sec-intro{color:var(--muted);font-size:1rem;margin:0 0 8px;max-width:62ch;}
+
+.feature{padding:28px 0;border-top:1px solid var(--line-soft);scroll-margin-top:84px;}
+.feature:first-of-type{border-top:none;}
+h3.feat-title{
+  font-family:var(--display);font-weight:600;color:var(--ink);
+  font-size:1.16rem;line-height:1.3;margin:0 0 10px;
+}
+.feature p{margin:0 0 14px;}
+.feature p:last-child{margin-bottom:0;}
+
+/* ordered steps */
+.steps{counter-reset:step;list-style:none;margin:16px 0;padding:0;}
+.steps li{
+  position:relative;padding:0 0 14px 42px;line-height:1.6;
+}
+.steps li:last-child{padding-bottom:0;}
+.steps li::before{
+  counter-increment:step;content:counter(step);
+  position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent-strong);
+  font-family:var(--mono);font-size:.8rem;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+}
+.steps li b{color:var(--ink);font-weight:600;}
+
+/* dash/option list */
+.opts{list-style:none;margin:14px 0;padding:0;}
+.opts li{position:relative;padding:0 0 10px 22px;line-height:1.6;}
+.opts li:last-child{padding-bottom:0;}
+.opts li::before{
+  content:"";position:absolute;left:0;top:.62em;width:9px;height:2px;border-radius:2px;background:var(--accent);
+}
+.opts li b{color:var(--ink);font-weight:600;}
+
+/* status chips */
+.status-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 2px;padding:0;list-style:none;}
+.status{
+  display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.76rem;font-weight:600;
+  padding:6px 12px;border-radius:7px;
+}
+.status::before{content:"";width:9px;height:9px;border-radius:50%;}
+.status.ok{background:var(--ok-soft);color:var(--ok);}
+.status.ok::before{background:var(--ok);}
+.status.warn{background:var(--warn-soft);color:var(--warn);}
+.status.warn::before{background:var(--warn);}
+.status.crit{background:var(--crit-soft);color:var(--crit);}
+.status.crit::before{background:var(--crit);}
+
+/* ---------- callouts ---------- */
+.callout{
+  border-left:4px solid var(--note);background:var(--note-soft);
+  border-radius:0 10px 10px 0;padding:16px 18px;margin:18px 0;font-size:.96rem;line-height:1.62;
+}
+.callout p{margin:0;}
+.callout p + p{margin-top:8px;}
+.callout .label{
+  display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.7rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px;color:var(--note);
+}
+.callout .label::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;}
+.callout.prereq{border-color:var(--accent);background:var(--accent-soft);}
+.callout.prereq .label{color:var(--accent-strong);}
+.callout.insight{border-color:var(--insight);background:var(--insight-soft);}
+.callout.insight .label{color:var(--insight);}
+.callout.tip{border-color:var(--ok);background:var(--ok-soft);}
+.callout.tip .label{color:var(--ok);}
+.callout.warn{border-color:var(--crit);background:var(--crit-soft);}
+.callout.warn .label{color:var(--crit);}
+
+/* ---------- figures / screenshots ---------- */
+.shot{margin:20px 0 4px;}
+.shot img{
+  display:block;width:100%;height:auto;border:1px solid var(--line);
+  border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(27,33,40,.05),0 8px 24px rgba(27,33,40,.06);
+}
+.shot figcaption{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--muted);
+  margin-top:10px;padding-left:2px;
+}
+.shot .ph{display:none;}
+.shot.failed img{display:none;}
+.shot.failed .ph{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  min-height:190px;border:1px dashed var(--line);border-radius:12px;background:var(--note-soft);
+  text-align:center;padding:24px;
+}
+.shot.failed .ph .ph-tag{
+  font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+}
+.shot.failed .ph .ph-text{font-size:.9rem;color:var(--muted);max-width:46ch;}
+
+/* ---------- video ---------- */
+.video{margin:20px 0 4px;}
+.video-frame{
+  position:relative;width:100%;padding-bottom:56.25%;height:0;
+  border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000;
+  box-shadow:0 1px 2px rgba(27,33,40,.05),0 8px 24px rgba(27,33,40,.06);
+}
+.video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.video-card{
+  display:flex;align-items:center;gap:14px;text-decoration:none;
+  border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--surface);
+  transition:border-color .15s,background .15s;
+}
+.video-card:hover{border-color:var(--accent);background:var(--accent-soft);text-decoration:none;}
+.video-card--empty{border-style:dashed;background:var(--note-soft);cursor:default;}
+.video-play{
+  display:flex;align-items:center;justify-content:center;flex:none;
+  width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;
+  font-size:.85rem;padding-left:3px;
+}
+.video-card--empty .video-play{background:var(--muted);}
+.video-label{font-family:var(--text);font-weight:600;color:var(--ink);font-size:.96rem;}
+.video figcaption{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--muted);
+  margin-top:10px;padding-left:2px;
+}
+
+/* ---------- tables ---------- */
+.table-wrap{
+  margin:18px 0 4px;overflow-x:auto;border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 1px 2px rgba(27,33,40,.05),0 8px 24px rgba(27,33,40,.05);
+}
+table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.55;}
+thead th{
+  text-align:left;font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--muted);background:var(--note-soft);
+  padding:11px 14px;border-bottom:1px solid var(--line);white-space:nowrap;
+}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--body);}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:nth-child(even){background:#FBFBFC;}
+tbody td:first-child{font-weight:600;color:var(--ink);white-space:nowrap;}
+td b{color:var(--ink);font-weight:600;}
+table caption{
+  caption-side:bottom;text-align:left;font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.02em;color:var(--muted);padding:10px 14px;
+}
+
+/* ---------- related + footer ---------- */
+.related{margin-top:72px;border-top:1px solid var(--line);padding-top:30px;scroll-margin-top:84px;}
+.related h2{font-family:var(--display);font-weight:600;font-size:1.2rem;color:var(--ink);margin:0 0 16px;}
+.related ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;}
+.related li{padding:7px 0;border-bottom:1px solid var(--line-soft);}
+.related li a{color:var(--body);font-size:.93rem;}
+.related li a:hover{color:var(--accent-strong);}
+.related li a::before{content:"→";color:var(--accent);margin-right:9px;font-family:var(--mono);}
+
+.feedback{
+  margin-top:56px;background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+}
+.feedback .q{font-family:var(--display);font-weight:600;color:var(--ink);font-size:1.02rem;}
+.fb-btns{display:flex;gap:10px;}
+.fb-btns button{
+  font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.03em;cursor:pointer;
+  background:#fff;border:1px solid var(--line);color:var(--body);padding:9px 20px;border-radius:8px;
+  transition:border-color .15s,color .15s,background .15s;
+}
+.fb-btns button:hover{border-color:var(--accent);color:var(--accent-strong);background:var(--accent-soft);}
+.fb-done{font-family:var(--mono);font-size:.82rem;color:var(--ok);font-weight:600;}
+
+.source-note{
+  margin-top:26px;font-size:.8rem;color:var(--muted);line-height:1.6;
+  border-top:1px solid var(--line-soft);padding-top:18px;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:920px){
+  .layout{grid-template-columns:1fr;gap:0;padding-top:32px;}
+  .toc{position:static;max-height:none;overflow:visible;margin-bottom:34px;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 8px;}
+  .toc .sub{display:none;}
+  .article{max-width:none;}
+  .related ul{grid-template-columns:1fr;}
+}
+@media (max-width:540px){
+  .wrap,.site-header .inner{padding-left:18px;padding-right:18px;}
+  .crumbs .crumb-hide{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{transition:none !important;}
+}
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="site-header">
+  <div class="inner">
+    <nav class="crumbs" aria-label="Breadcrumb">
+            <a href="#">Help</a>
+      <span class="sep crumb-hide">/</span>
+      <a href="#" class="crumb-hide">Application Control</a>
+      <span class="sep">/</span>
+      <span class="here">Configure Application Groups</span>
+    </nav>
+    <a class="trial" href="https://www.manageengine.com/products/desktop-central/help/application-control/ac-faq.html#apgfaq">View FAQ</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="layout">
+
+    <aside class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ul>
+        <li><a class="lead-link" href="#application-groups">Application Groups</a>
+          <ul class="sub">
+            <li><a href="#what-is-an-application-group">What is an application group?</a></li>
+            <li><a href="#allowlists-and-blocklists">Allowlists and Blocklists</a></li>
+          </ul>
+        </li>
+        <li><a class="lead-link" href="#creating-an-application-group">Creating an Application Group</a>
+          <ul class="sub">
+            <li><a href="#basic-setup">Basic setup</a></li>
+          </ul>
+        </li>
+        <li><a class="lead-link" href="#filter-rules-for-windows">Filter Rules for Windows</a>
+          <ul class="sub">
+            <li><a href="#available-filter-rules">Available filter rules</a></li>
+            <li><a href="#trusted-vendors">Trusted Vendors</a></li>
+            <li><a href="#product-name">Product Name</a></li>
+            <li><a href="#verified-executables">Verified Executables</a></li>
+            <li><a href="#file-hash">File Hash</a></li>
+            <li><a href="#folder-path">Folder Path</a></li>
+            <li><a href="#storeapps-rule">StoreApps Rule</a></li>
+            <li><a href="#custom-rule">Custom Rule</a></li>
+          </ul>
+        </li>
+        <li><a class="lead-link" href="#filter-rules-for-mac">Filter Rules for Mac</a>
+          <ul class="sub">
+            <li><a href="#available-filter-rules-2">Available filter rules</a></li>
+            <li><a href="#vendors">Vendors</a></li>
+            <li><a href="#application">Application</a></li>
+            <li><a href="#binary">Binary</a></li>
+            <li><a href="#file-hash-2">File Hash</a></li>
+            <li><a href="#folder-path-2">Folder Path</a></li>
+            <li><a href="#custom-rule-2">Custom Rule</a></li>
+            <li><a href="#search-bar-filters">Search bar filters</a></li>
+          </ul>
+        </li>
+        <li><a class="lead-link" href="#managing-application-groups">Managing Application Groups</a>
+          <ul class="sub">
+            <li><a href="#application-group-summary">Application Group Summary</a></li>
+            <li><a href="#importing-and-exporting-groups">Importing and Exporting Groups</a></li>
+          </ul>
+        </li>
+        <li><a class="lead-link" href="#allow-all-child-processes">Allow All Child Processes</a>
+          <ul class="sub">
+            <li><a href="#what-are-child-processes">What are child processes?</a></li>
+            <li><a href="#configuring-child-process-permissions">Configuring child process permissions</a></li>
+          </ul>
+        </li>
+        <li><a class="lead-link" href="#related">Related</a></li>
+      </ul>
+    </aside>
+
+    <main class="article" id="main">
+      <p class="eyebrow">Endpoint Central · Application Control</p>
+      <h1>Configure Application Groups</h1>
+      <p class="dek">Organize applications into allowlists and blocklists using rule-based groups, then apply them across your managed endpoints.</p>
+      <ul class="chips">
+        <li class="chip">Windows</li>
+        <li class="chip">macOS</li>
+      </ul>
+      <div class="callout prereq">
+            <div class="label">Prerequisite</div>
+            <p>For macOS application groups, complete the <a href="https://www.manageengine.com/products/desktop-central/help/application-control/dependencies/configure-mac-prerequisites.html">Mac prerequisites</a> before creating a group.</p>
+      </div>
+
+      <section class="doc-section" id="application-groups">
+        <p class="eyebrow">Overview</p>
+        <h2 class="sec-title">Application Groups</h2>
+        <p class="sec-intro">Understand the two listing types and how Endpoint Central discovers the apps available to group.</p>
+
+        <div class="feature" id="what-is-an-application-group">
+          <h3 class="feat-title">What is an application group?</h3>
+          <figure class="video">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/Axu9vkI7HxQ" title="Configure Application Groups walkthrough" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <figcaption>Watch a full walkthrough of configuring application groups in Endpoint Central.</figcaption>
+          </figure>
+          
+        </div>
+
+        <div class="feature" id="allowlists-and-blocklists">
+          <h3 class="feat-title">Allowlists and Blocklists</h3>
+          <p>Every group is either an <b>allowlist</b> or a <b>blocklist</b>.</p>
+          <ul class="opts">
+            <li><b>Allowlist</b> — only the applications in this group are permitted to run. Everything else is blocked. Use allowlisting to lock down endpoints to a known-good set of software and prevent unauthorized installations or malware from executing.</li>
+            <li><b>Blocklist</b> — the applications in this group are explicitly prevented from running. Use blocklisting to ban specific known-malicious or unauthorized programs while leaving everything else unrestricted.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="doc-section" id="creating-an-application-group">
+        <p class="eyebrow">Creation</p>
+        <h2 class="sec-title">Creating an Application Group</h2>
+        <p class="sec-intro">Start from the Application Control console and build a group using filters and custom rules.</p>
+
+        <div class="feature" id="basic-setup">
+          <h3 class="feat-title">Basic setup</h3>
+          <ol class="steps">
+            <li>Go to <b>Application Control → Application Groups</b> in the Endpoint Central console.</li>
+            <li>Click <b>Create Allowlist</b> or <b>Create Blocklist</b> depending on the type of group you need.</li>
+            <li>Select <b>Windows</b> or <b>Mac OS</b> to specify which platform the group applies to.</li>
+            <li>Enter a name for the group and, optionally, a description.</li>
+          </ol>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-create-app-group.png" alt="The Create Application Group form showing the name, description, and platform fields." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Create Application Group form</span></div>
+            <figcaption>Group creation form — name, platform, and initial filter options.</figcaption>
+          </figure>
+          <p>By default, all applications discovered on agents are shown under the <b>All</b> filter. Use the filter rules below to narrow the selection, then click <b>Create</b> to save the group.</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="filter-rules-for-windows">
+        <p class="eyebrow">Windows Filters</p>
+        <h2 class="sec-title">Filter Rules for Windows</h2>
+        <p class="sec-intro">Six rule types let you precisely control which applications are added to a Windows group.</p>
+
+        <div class="feature" id="available-filter-rules">
+          <h3 class="feat-title">Available filter rules</h3>
+          <figure class="shot">
+            <img src="https://cdn.manageengine.com/sites/meweb/images/desktop-central/help/application-control/ac-filter-windows.gif" alt="Animated overview of the Windows filter rule drop-down options." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Animated GIF: Windows filter rules overview</span></div>
+            <figcaption>Windows filter rules drop-down.</figcaption>
+          </figure>
+          <p>Click the drop-down next to <b>All</b> to switch to a specific rule type. All discovered applications are evaluated against the rules you set, and those that match are added to the group.</p>
+        </div>
+
+        <div class="feature" id="trusted-vendors">
+          <h3 class="feat-title">Trusted Vendors</h3>
+          <p><b>Trusted Vendors</b> are software publishers that have digitally signed their products with a code-signing certificate, confirming the publisher's identity and the software's integrity. Trusting vendors without valid certificates exposes the network to backdoor attacks.</p>
+          <p>When you pick one or more trusted vendors, all applications published by those vendors are included in the group.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-vendors-rule.png" alt="Trusted Vendors rule showing a list of verified software publishers to select." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Trusted Vendors rule</span></div>
+            <figcaption>Trusted Vendors filter — select publishers by verified certificate.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="product-name">
+          <h3 class="feat-title">Product Name</h3>
+          <p>Filter by <b>Product Name</b> to target specific applications from any vendor. Discovered applications are listed by product name for you to select.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-product-rule.png" alt="Product Name rule displaying a list of discovered application names." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Product Name rule</span></div>
+            <figcaption>Product Name filter — choose individual applications regardless of publisher.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="verified-executables">
+          <h3 class="feat-title">Verified Executables</h3>
+          <p>Applications consist of multiple executable files, each typically signed by the vendor. The <b>Verified Executables</b> rule surfaces those signed files so you can select exactly which executables to allow or block.</p>
+          <p>Any executable whose digital signature has been tampered with will be prevented from running — this rule is especially useful for tightening control below the application level.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-exe-rule.png" alt="Verified Executables rule listing digitally signed executable files." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Verified Executables rule</span></div>
+            <figcaption>Verified Executables filter — control at the individual executable level.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="file-hash">
+          <h3 class="feat-title">File Hash</h3>
+          <p>The <b>File Hash</b> rule identifies executables by their unique cryptographic hash rather than by a certificate. This means unsigned processes — those without valid digital certificates — are also surfaced for review and can be included in a group.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-file-hash-rule.png" alt="File Hash rule listing executable files identified by their hash value." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: File Hash rule</span></div>
+            <figcaption>File Hash filter — covers unsigned executables that other rules would miss.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="folder-path">
+          <h3 class="feat-title">Folder Path</h3>
+          <p>The <b>Folder Path</b> rule includes all applications under a specified directory, including items in sub-folders. It's a convenient way to group everything you've already organized into a trusted folder.</p>
+          <p>Windows environment variables are supported in the path. For the full list of supported system variables, see the <a href="https://www.manageengine.com/products/desktop-central/help/application-control/dependencies/supported-system-variables.html">supported system variables reference</a>.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-folder-path-rule.png" alt="Folder Path rule with a text field for entering the directory path." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Folder Path rule</span></div>
+            <figcaption>Folder Path filter — enter a path to include everything under that directory.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="storeapps-rule">
+          <h3 class="feat-title">StoreApps Rule</h3>
+          <p>The <b>StoreApps</b> rule discovers all Windows 10 and Windows 11 Store applications running on managed endpoints, letting you group modern Store apps alongside legacy desktop software.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-storeapps-rule.png" alt="StoreApps rule listing Windows Store applications discovered on endpoints." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: StoreApps rule</span></div>
+            <figcaption>StoreApps filter — include Windows 10/11 Store apps in your group.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="custom-rule">
+          <h3 class="feat-title">Custom Rule</h3>
+          <p>Use a <b>Custom Rule</b> when an application has not been detected in your network. Define criteria manually — vendor, product name, verified executable, or file hash — to create a rule for it.</p>
+          <figure class="shot">
+            <img src="https://cdn.manageengine.com/sites/meweb/images/desktop-central/help/application-control/ac-custom-rule.gif" alt="Animated walkthrough of creating a Custom Rule with manually entered criteria." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Animated GIF: Custom Rule creation</span></div>
+            <figcaption>Custom Rule — define criteria for apps not yet discovered in the network.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="doc-section" id="filter-rules-for-mac">
+        <p class="eyebrow">macOS Filters</p>
+        <h2 class="sec-title">Filter Rules for Mac</h2>
+        <p class="sec-intro">Five filter types — plus a search bar — let you control which applications land in a macOS group.</p>
+
+        <div class="feature" id="available-filter-rules-2">
+          <h3 class="feat-title">Available filter rules</h3>
+          <figure class="shot">
+            <img src="https://cdn.manageengine.com/sites/meweb/images/desktop-central/help/application-control/ac-filters-mac.gif" alt="Animated overview of the macOS filter rule options." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Animated GIF: macOS filter rules overview</span></div>
+            <figcaption>macOS filter rules drop-down.</figcaption>
+          </figure>
+          <p>The rules work the same way as on Windows: all discovered applications are evaluated against the criteria you set, and matches are added to the group. Click the drop-down next to <b>All</b> to select a specific rule type.</p>
+        </div>
+
+        <div class="feature" id="vendors">
+          <h3 class="feat-title">Vendors</h3>
+          <p>Publisher verification confirms that the organization distributing an app is genuine. When you select one or more <b>Vendors</b>, every application from those publishers is included in the group.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-vendors-rule-mac.png" alt="macOS Vendors rule showing a list of verified publishers." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: macOS Vendors rule</span></div>
+            <figcaption>Vendors filter for macOS — select verified publishers.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="application">
+          <h3 class="feat-title">Application</h3>
+          <p>The <b>Application</b> filter lists discovered apps by name, letting you pick specific applications from any vendor.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-application-rule-mac.png" alt="macOS Application rule listing discovered applications by name." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: macOS Application rule</span></div>
+            <figcaption>Application filter for macOS — choose individual apps by name.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="binary">
+          <h3 class="feat-title">Binary</h3>
+          <p>On macOS, executable files are called <b>binaries</b>. This filter surfaces the binary files for discovered applications so you can allow or block at the executable level.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-binary-rule-mac.png" alt="Binary rule listing macOS executable (binary) files." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: macOS Binary rule</span></div>
+            <figcaption>Binary filter — target individual macOS executables.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="file-hash-2">
+          <h3 class="feat-title">File Hash</h3>
+          <p>Identical in behavior to the Windows version: the <b>File Hash</b> rule identifies executables by their cryptographic hash, covering unsigned processes that other rules would miss.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-file-hash-mac.png" alt="macOS File Hash rule listing executables identified by hash value." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: macOS File Hash rule</span></div>
+            <figcaption>File Hash filter for macOS — catches unsigned processes.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="folder-path-2">
+          <h3 class="feat-title">Folder Path</h3>
+          <p>Specify a directory path to include all applications stored in that folder. Collecting trusted apps into a single folder and using this rule is an efficient way to group them all at once.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-folder-path-mac.png" alt="macOS Folder Path rule with a directory path input field." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: macOS Folder Path rule</span></div>
+            <figcaption>Folder Path filter for macOS — include everything under a directory.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="custom-rule-2">
+          <h3 class="feat-title">Custom Rule</h3>
+          <p>Define a <b>Custom Rule</b> for any application not yet discovered in your network by specifying its vendor, product name, verified executable, or file hash manually.</p>
+          <figure class="shot">
+            <img src="https://cdn.manageengine.com/sites/meweb/images/desktop-central/help/application-control/ac-custom-rule-mac.gif" alt="Animated walkthrough of creating a macOS Custom Rule." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Animated GIF: macOS Custom Rule creation</span></div>
+            <figcaption>Custom Rule for macOS — define criteria manually for undetected apps.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="search-bar-filters">
+          <h3 class="feat-title">Search bar filters</h3>
+          <p>Beyond the rule types above, the search bar lets you filter the application list by <b>custom group</b>, <b>application type</b>, and <b>publisher credibility</b> to narrow your selection further.</p>
+          <figure class="shot">
+            <img src="https://cdn.manageengine.com/sites/meweb/images/desktop-central/help/application-control/ac-filters.gif" alt="Search bar filter options showing custom group, application type, and publisher credibility fields." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Animated GIF: Search bar filters</span></div>
+            <figcaption>Search bar filters — refine the application list before finalizing a group.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="doc-section" id="managing-application-groups">
+        <p class="eyebrow">Management</p>
+        <h2 class="sec-title">Managing Application Groups</h2>
+        <p class="sec-intro">Review a group's rules, export it for sharing, and import groups from a file.</p>
+
+        <div class="feature" id="application-group-summary">
+          <h3 class="feat-title">Application Group Summary</h3>
+          <p>Select any application group to open its <b>summary view</b>. The summary lists all rule details and any associated custom groups at a glance.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-app-summary.png" alt="Application Group Summary screen showing rule details and custom group associations." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Application Group Summary</span></div>
+            <figcaption>Group summary — rule breakdown and associated custom groups.</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature" id="importing-and-exporting-groups">
+          <h3 class="feat-title">Importing and Exporting Groups</h3>
+          <p>Groups can be exported or imported as <b>.xlsx files</b>, making it easy to back up configurations or replicate them across environments.</p>
+          <ol class="steps">
+            <li>To <b>export</b>, click the <b>Export</b> option next to the group. The file is downloaded as an .xlsx file with each filter rule in a separate sheet.</li>
+            <li>To <b>import</b>, open the group creation or editing view and click <b>Import</b>, then select your .xlsx file.</li>
+          </ol>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-export-app-group.png" alt="Export option next to an application group in the group list." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Export Application Group</span></div>
+            <figcaption>Export an application group as an .xlsx file.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-import-app-group-1.png" alt="Import option shown during application group creation." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Import Application Group (step 1)</span></div>
+            <figcaption>Import an .xlsx file while creating or modifying a group.</figcaption>
+          </figure>
+          <p>When importing, you can choose to <b>add the rules to the existing group</b> or <b>replace the current rules entirely</b>. All rules in the file are incorporated on success. Any rule not already in the database is created automatically and marked as selected.</p>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-import-app-group-2.png" alt="Import options dialog letting the user choose to add or replace existing rules." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Import Application Group (step 2)</span></div>
+            <figcaption>Choose whether to append or replace rules during import.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="doc-section" id="allow-all-child-processes">
+        <p class="eyebrow">Child Processes</p>
+        <h2 class="sec-title">Allow All Child Processes</h2>
+        <p class="sec-intro">Grant trusted applications the ability to spawn child processes without being blocked.</p>
+
+        <div class="feature" id="what-are-child-processes">
+          <h3 class="feat-title">What are child processes?</h3>
+          <p><b>Child processes</b> are processes launched by a running application. They can be a security risk, but many legitimate applications depend on them. This setting lets you designate specific trusted applications that are allowed to create child processes, reducing the attack surface while preserving functionality.</p>
+          <div class="callout note">
+            <div class="label">Note</div>
+            <p>Child processes of an application will continue to run even if that application is otherwise blocked by a policy.</p>
+          </div>
+        </div>
+
+        <div class="feature" id="configuring-child-process-permissions">
+          <h3 class="feat-title">Configuring child process permissions</h3>
+          <ol class="steps">
+            <li>Log in to the <b>Endpoint Central</b> web console and go to <b>Application Control → Child Process</b>.</li>
+            <li>In <b>Global Child Process Configuration</b>, select the applications that should be permitted to run child processes.</li>
+            <li>Click <b>Apply</b>.</li>
+          </ol>
+          <figure class="shot">
+            <img src="https://www.manageengine.com/products/desktop-central/help/images/ac-child-process.png" alt="Child Process configuration screen showing the application selection list and Apply button." loading="lazy" onerror="this.closest('.shot').classList.add('failed')">
+            <div class="ph"><span class="ph-tag">Figure</span><span class="ph-text">Screenshot: Child Process configuration</span></div>
+            <figcaption>Global Child Process Configuration — select trusted applications and apply.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="related" id="related">
+        <h2>Related</h2>
+        <ul>
+          <li><a href="https://www.manageengine.com/products/desktop-central/help/application-control/dependencies/configure-mac-prerequisites.html">Mac prerequisites for Application Control</a></li>
+          <li><a href="https://www.manageengine.com/products/desktop-central/help/application-control/dependencies/supported-system-variables.html">Supported system variables (Windows)</a></li>
+          <li><a href="https://www.manageengine.com/products/desktop-central/help/application-control/ac-faq.html#apgfaq">Application Control FAQ</a></li>
+        </ul>
+      </section>
+      <div class="feedback">
+        <span class="q">Was this document helpful?</span>
+        <div class="fb-btns" id="fb">
+          <button type="button" data-v="yes">Yes</button>
+          <button type="button" data-v="no">No</button>
+        </div>
+      </div>
+      <p class="source-note">Source: ManageEngine Endpoint Central help documentation — Configure Application Groups.</p>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// Help-doc behavior: active-section highlighting + feedback.
+// Inlined into every output by the renderer.
+// ============================================================
+
+// ---- scrollspy: highlight the active section in the side nav ----
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+  var map = {};
+  var targets = [];
+  links.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if(el){ map[id] = a; targets.push(el); }
+  });
+  var visible = {};
+  function setActive(id){
+    links.forEach(function(a){ a.classList.remove('active'); a.removeAttribute('aria-current'); });
+    if(map[id]){ map[id].classList.add('active'); map[id].setAttribute('aria-current','true'); }
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ visible[e.target.id] = true; }
+        else { delete visible[e.target.id]; }
+      });
+      for(var i=0;i<targets.length;i++){
+        if(visible[targets[i].id]){ setActive(targets[i].id); break; }
+      }
+    }, {rootMargin:'-82px 0px -70% 0px', threshold:0});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+})();
+
+// ---- feedback buttons ----
+(function(){
+  var box = document.getElementById('fb');
+  if(!box) return;
+  box.addEventListener('click', function(e){
+    var btn = e.target.closest('button'); if(!btn) return;
+    box.innerHTML = '<span class="fb-done">Thanks for your feedback!</span>';
+  });
+})();
+
+</script>
+</body>
+</html>
